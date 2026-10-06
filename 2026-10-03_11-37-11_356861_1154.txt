@@ -1,0 +1,77 @@
+# Terminal Full Output
+# Terminal: phimviet-final-fetch
+# Command: set -e
+cd /home/ubuntu/phimviet
+git fetch origin main >/tmp/phimviet-final-fetch.log 2>&1 || { echo 'fetch=failed'; exit 1; }
+echo 'fetch=ok'
+printf 'origin_main='; git rev-parse --short origin/main
+printf 'head='; git rev-parse --short HEAD
+if git merge-base --is-ancestor origin/main HEAD; then echo 'remote_is_ancestor=yes'; else echo 'remote_is_ancestor=no'; fi
+git status --short --branch
+git diff --check
+
+# PID: 1154
+# Timestamp: 2026-10-03_11-37-11.356861
+# Original Length: 2055 characters
+# ----------------------------------------
+
+[32mubuntu@sandbox:~$ [0mset -e
+cd /home/ubuntu/phimviet
+git fetch origin main >/tmp/phimviet-final-fetch.log 2>&1 || { echo 'fetch=failed'; exit 1; }
+echo 'fetch=ok'
+printf 'origin_main='; git rev-parse --short origin/main
+printf 'head='; git rev-parse --short HEAD
+if git merge-base --is-ancestor origin/main HEAD; then echo 'remote_is_ancestor=yes'; else echo 'remote_is_ancestor=no'; fi
+git status --short --branch
+git diff --check
+fetch=ok
+origin_main=5e80b8a
+head=5e80b8a
+remote_is_ancestor=yes
+## [32mmain
+[m [31mM[m TODO.md
+ [31mM[m app.config.ts
+ [31mM[m app/(tabs)/_layout.tsx
+ [31mM[m app/(tabs)/continue.tsx
+ [31mM[m app/(tabs)/index.tsx
+ [31mM[m app/(tabs)/search.tsx
+ [31mM[m app/_layout.tsx
+ [31mM[m app/movie/[slug].tsx
+ [31mM[m app/oauth/callback.tsx
+ [31mM[m app/watch/[slug].tsx
+ [31mM[m components/movie-player.tsx
+ [31mM[m components/movie-player.web.tsx
+ [31mM[m components/movie-poster-card.tsx
+ [31mM[m components/screen-container.tsx
+ [31mM[m constants/movie-theme.ts
+ [31mM[m constants/oauth.ts
+ [31mM[m drizzle/meta/_journal.json
+ [31mM[m drizzle/schema.ts
+ [31mM[m lib/theme-provider.tsx
+ [31mM[m lib/watch-progress.ts
+ [31mM[m package.json
+ [31mM[m plan.md
+ [31mM[m pnpm-lock.yaml
+ [31mM[m server/_core/cookies.ts
+ [31mM[m server/_core/oauth.ts
+ [31mM[m server/_core/sdk.ts
+ [31mM[m server/db.ts
+ [31mM[m server/routers.ts
+ [31mM[m tests/auth.logout.test.ts
+ [31mM[m tests/cors.test.ts
+ [31mM[m theme.config.js
+[31m??[m app/(tabs)/account.tsx
+[31m??[m assets/images/android-tv-banner.png
+[31m??[m components/tv-focusable.tsx
+[31m??[m components/tv-focusable.web.tsx
+[31m??[m drizzle/0001_round_colleen_wing.sql
+[31m??[m drizzle/meta/0001_snapshot.json
+[31m??[m eas.json
+[31m??[m hooks/use-watch-history.ts
+[31m??[m lib/watch-history-identity.ts
+[31m??[m plugins/
+[31m??[m pnpm-workspace.yaml
+[31m??[m server/history.ts
+[31m??[m shared/oauth-state.ts
+[31m??[m tests/watch-history-identity.test.ts
+[32mubuntu@sandbox:~/phimviet$ [0m

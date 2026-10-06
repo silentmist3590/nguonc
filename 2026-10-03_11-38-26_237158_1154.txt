@@ -1,0 +1,181 @@
+# Terminal Full Output
+# Terminal: phimviet-checkpoint-push
+# Command: set -euo pipefail
+cd /home/ubuntu/phimviet
+git add -A
+git diff --cached --check
+printf 'staged_files='; git diff --cached --name-only | wc -l
+printf '%s\n' '-- staged summary --'
+git diff --cached --stat
+git commit -m "feat: complete Phim Viet mobile app"
+commit=$(git rev-parse --short HEAD)
+printf 'commit=%s\n' "$commit"
+if git push origin main >/tmp/phimviet-final-push.log 2>&1; then
+  echo 'push=ok'
+else
+  echo 'push=failed'
+  sed -E 's#(https?://)[^/@[:space:]]+(:[^/@[:space:]]+)?@#\1[redacted]@#g' /tmp/phimviet-final-push.log | tail -40
+  exit 1
+fi
+printf '%s\n' '-- commit --'
+git show --stat --oneline --summary HEAD
+printf '%s\n' '-- final status --'
+git status --short --branch
+
+# PID: 1154
+# Timestamp: 2026-10-03_11-38-26.237158
+# Original Length: 8249 characters
+# ----------------------------------------
+
+[32mubuntu@sandbox:~$ [0mset -euo pipefail
+cd /home/ubuntu/phimviet
+git add -A
+git diff --cached --check
+printf 'staged_files='; git diff --cached --name-only | wc -l
+printf '%s\n' '-- staged summary --'
+git diff --cached --stat
+git commit -m "feat: complete Phim Viet mobile app"
+commit=$(git rev-parse --short HEAD)
+printf 'commit=%s\n' "$commit"
+if git push origin main >/tmp/phimviet-final-push.log 2>&1; then
+  echo 'push=ok'
+else
+  echo 'push=failed'
+  sed -E 's#(https?://)[^/@[:space:]]+(:[^/@[:space:]]+)?@#\1[redacted]@#g' /tmp/phimviet-final-push.log | tail -40
+  exit 1
+fi
+printf '%s\n' '-- commit --'
+git show --stat --oneline --summary HEAD
+printf '%s\n' '-- final status --'
+git status --short --branch
+staged_files=45
+-- staged summary --
+ TODO.md                              |  39 [32m+++
+[m app.config.ts                        |   6 [32m+[m[31m-
+[m app/(tabs)/_layout.tsx               |  36 [32m+[m[31m-
+[m app/(tabs)/account.tsx               | 307 [32m+++++++++++++++++
+[m app/(tabs)/continue.tsx              | 129 [32m++++[m[31m---
+[m app/(tabs)/index.tsx                 | 162 [32m++++[m[31m-----
+[m app/(tabs)/search.tsx                |  91 [32m++[m[31m---
+[m app/_layout.tsx                      |  28 [32m+[m[31m-
+[m app/movie/[slug].tsx                 | 178 [32m++++++[m[31m----
+[m app/oauth/callback.tsx               | 293 [32m+++++[m[31m-----------
+[m app/watch/[slug].tsx                 | 228 [32m++++++++[m[31m-----
+[m assets/images/android-tv-banner.png  | Bin [31m0[m -> [32m8310[m bytes
+ components/movie-player.tsx          |  39 [32m++[m[31m-
+[m components/movie-player.web.tsx      |  31 [32m+[m[31m-
+[m components/movie-poster-card.tsx     |  50 [32m+[m[31m--
+[m components/screen-container.tsx      |   7 [32m+[m[31m-
+[m components/tv-focusable.tsx          |  57 [32m++++
+[m components/tv-focusable.web.tsx      | 123 [32m+++++++
+[m constants/movie-theme.ts             |  47 [32m++[m[31m-
+[m constants/oauth.ts                   | 121 [32m+++[m[31m----
+[m drizzle/0001_round_colleen_wing.sql  |  16 [32m+
+[m drizzle/meta/0001_snapshot.json      | 224 [32m++++++++++++
+[m drizzle/meta/_journal.json           |   9 [32m+[m[31m-
+[m drizzle/schema.ts                    |  24 [32m+[m[31m-
+[m eas.json                             |  29 [32m++
+[m hooks/use-watch-history.ts           |  93 [32m+++++
+[m lib/theme-provider.tsx               |  49 [32m++[m[31m-
+[m lib/watch-history-identity.ts        |  34 [32m++
+[m lib/watch-progress.ts                | 150 [32m+++++[m[31m---
+[m package.json                         |  13 [32m+[m[31m-
+[m plan.md                              |  70 [32m++[m[31m--
+[m plugins/with-tv-banner.ts            |  32 [32m++
+[m pnpm-lock.yaml                       | 640 [32m++++++++++++++++++++[m[31m---------------
+[m pnpm-workspace.yaml                  |   5 [32m+
+[m server/_core/cookies.ts              |  14 [32m+
+[m server/_core/oauth.ts                | 103 [32m++++++
+[m server/_core/sdk.ts                  |  12 [32m+[m[31m-
+[m server/db.ts                         |  89 [32m++++[m[31m-
+[m server/history.ts                    |  47 [32m+++
+[m server/routers.ts                    |   2 [32m+
+[m shared/oauth-state.ts                |  61 [32m++++
+[m tests/auth.logout.test.ts            |   3 [32m+[m[31m-
+[m tests/cors.test.ts                   |  74 [32m++[m[31m--
+[m tests/watch-history-identity.test.ts |  64 [32m++++
+[m theme.config.js                      |  18 [32m+[m[31m-
+[m 45 files changed, 2740 insertions(+), 1107 deletions(-)
+[main 012fa12] feat: complete Phim Viet mobile app
+ 45 files changed, 2740 insertions(+), 1107 deletions(-)
+ create mode 100644 app/(tabs)/account.tsx
+ create mode 100644 assets/images/android-tv-banner.png
+ create mode 100644 components/tv-focusable.tsx
+ create mode 100644 components/tv-focusable.web.tsx
+ create mode 100644 drizzle/0001_round_colleen_wing.sql
+ create mode 100644 drizzle/meta/0001_snapshot.json
+ create mode 100644 eas.json
+ create mode 100644 hooks/use-watch-history.ts
+ create mode 100644 lib/watch-history-identity.ts
+ create mode 100644 plugins/with-tv-banner.ts
+ create mode 100644 pnpm-workspace.yaml
+ create mode 100644 server/history.ts
+ create mode 100644 shared/oauth-state.ts
+ create mode 100644 tests/watch-history-identity.test.ts
+commit=012fa12
+push=ok
+-- commit --
+[33m012fa12[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m feat: complete Phim Viet mobile app
+ TODO.md                              |  39 [32m+++
+[m app.config.ts                        |   6 [32m+[m[31m-
+[m app/(tabs)/_layout.tsx               |  36 [32m+[m[31m-
+[m app/(tabs)/account.tsx               | 307 [32m+++++++++++++++++
+[m app/(tabs)/continue.tsx              | 129 [32m++++[m[31m---
+[m app/(tabs)/index.tsx                 | 162 [32m++++[m[31m-----
+[m app/(tabs)/search.tsx                |  91 [32m++[m[31m---
+[m app/_layout.tsx                      |  28 [32m+[m[31m-
+[m app/movie/[slug].tsx                 | 178 [32m++++++[m[31m----
+[m app/oauth/callback.tsx               | 293 [32m+++++[m[31m-----------
+[m app/watch/[slug].tsx                 | 228 [32m++++++++[m[31m-----
+[m assets/images/android-tv-banner.png  | Bin [31m0[m -> [32m8310[m bytes
+ components/movie-player.tsx          |  39 [32m++[m[31m-
+[m components/movie-player.web.tsx      |  31 [32m+[m[31m-
+[m components/movie-poster-card.tsx     |  50 [32m+[m[31m--
+[m components/screen-container.tsx      |   7 [32m+[m[31m-
+[m components/tv-focusable.tsx          |  57 [32m++++
+[m components/tv-focusable.web.tsx      | 123 [32m+++++++
+[m constants/movie-theme.ts             |  47 [32m++[m[31m-
+[m constants/oauth.ts                   | 121 [32m+++[m[31m----
+[m drizzle/0001_round_colleen_wing.sql  |  16 [32m+
+[m drizzle/meta/0001_snapshot.json      | 224 [32m++++++++++++
+[m drizzle/meta/_journal.json           |   9 [32m+[m[31m-
+[m drizzle/schema.ts                    |  24 [32m+[m[31m-
+[m eas.json                             |  29 [32m++
+[m hooks/use-watch-history.ts           |  93 [32m+++++
+[m lib/theme-provider.tsx               |  49 [32m++[m[31m-
+[m lib/watch-history-identity.ts        |  34 [32m++
+[m lib/watch-progress.ts                | 150 [32m+++++[m[31m---
+[m package.json                         |  13 [32m+[m[31m-
+[m plan.md                              |  70 [32m++[m[31m--
+[m plugins/with-tv-banner.ts            |  32 [32m++
+[m pnpm-lock.yaml                       | 640 [32m++++++++++++++++++++[m[31m---------------
+[m pnpm-workspace.yaml                  |   5 [32m+
+[m server/_core/cookies.ts              |  14 [32m+
+[m server/_core/oauth.ts                | 103 [32m++++++
+[m server/_core/sdk.ts                  |  12 [32m+[m[31m-
+[m server/db.ts                         |  89 [32m++++[m[31m-
+[m server/history.ts                    |  47 [32m+++
+[m server/routers.ts                    |   2 [32m+
+[m shared/oauth-state.ts                |  61 [32m++++
+[m tests/auth.logout.test.ts            |   3 [32m+[m[31m-
+[m tests/cors.test.ts                   |  74 [32m++[m[31m--
+[m tests/watch-history-identity.test.ts |  64 [32m++++
+[m theme.config.js                      |  18 [32m+[m[31m-
+[m 45 files changed, 2740 insertions(+), 1107 deletions(-)
+ create mode 100644 app/(tabs)/account.tsx
+ create mode 100644 assets/images/android-tv-banner.png
+ create mode 100644 components/tv-focusable.tsx
+ create mode 100644 components/tv-focusable.web.tsx
+ create mode 100644 drizzle/0001_round_colleen_wing.sql
+ create mode 100644 drizzle/meta/0001_snapshot.json
+ create mode 100644 eas.json
+ create mode 100644 hooks/use-watch-history.ts
+ create mode 100644 lib/watch-history-identity.ts
+ create mode 100644 plugins/with-tv-banner.ts
+ create mode 100644 pnpm-workspace.yaml
+ create mode 100644 server/history.ts
+ create mode 100644 shared/oauth-state.ts
+ create mode 100644 tests/watch-history-identity.test.ts
+-- final status --
+## [32mmain
+[32mubuntu@sandbox:~/phimviet$ [0m

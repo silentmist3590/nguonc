@@ -1,0 +1,33 @@
+{
+  "cli": {
+    "version": ">= 16.0.0"
+  },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "channel": "preview",
+      "env": {
+        "EXPO_PUBLIC_API_BASE_URL": "https://phimviet-qkvwoqr7.manus.space"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview_tv": {
+      "distribution": "internal",
+      "channel": "preview-tv",
+      "env": {
+        "EXPO_TV": "1",
+        "EXPO_PUBLIC_API_BASE_URL": "https://phimviet-qkvwoqr7.manus.space"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      }
+    }
+  }
+}
