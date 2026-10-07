@@ -10,7 +10,8 @@
         "EXPO_PUBLIC_API_BASE_URL": "https://phimviet-qkvwoqr7.manus.space"
       },
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "image": "latest"
       }
     },
     "preview_tv": {
@@ -21,7 +22,8 @@
         "EXPO_PUBLIC_API_BASE_URL": "https://phimviet-qkvwoqr7.manus.space"
       },
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "image": "latest"
       }
     },
     "production": {
